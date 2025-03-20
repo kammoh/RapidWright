@@ -25,7 +25,7 @@
  */
 package com.xilinx.rapidwright.device.browser;
 
-import com.trolltech.qt.QSignalEmitter;
+import io.qt.core.QObject;
 import com.xilinx.rapidwright.device.Tile;
 
 /**

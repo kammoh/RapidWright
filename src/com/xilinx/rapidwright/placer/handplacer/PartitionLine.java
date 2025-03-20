@@ -23,9 +23,9 @@
  */
 package com.xilinx.rapidwright.placer.handplacer;
 
-import com.trolltech.qt.core.Qt.PenStyle;
-import com.trolltech.qt.gui.QColor;
-import com.trolltech.qt.gui.QPen;
+import io.qt.core.Qt;
+import io.qt.gui.QColor;
+import io.qt.gui.QPen;
 import com.xilinx.rapidwright.device.Tile;
 
 public class PartitionLine{

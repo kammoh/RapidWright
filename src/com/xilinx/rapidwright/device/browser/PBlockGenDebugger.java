@@ -26,11 +26,11 @@
 package com.xilinx.rapidwright.device.browser;
 
 
-import com.trolltech.qt.gui.QAction;
-import com.trolltech.qt.gui.QApplication;
-import com.trolltech.qt.gui.QMenu;
-import com.trolltech.qt.gui.QToolBar;
-import com.trolltech.qt.gui.QWidget;
+import io.qt.gui.QAction;
+import io.qt.widgets.QApplication;
+import io.qt.widgets.QMenu;
+import io.qt.widgets.QToolBar;
+import io.qt.widgets.QWidget;
 import com.xilinx.rapidwright.design.blocks.PBlockGenerator;
 import com.xilinx.rapidwright.device.Tile;
 import com.xilinx.rapidwright.gui.TileView;

@@ -28,14 +28,13 @@ package com.xilinx.rapidwright.gui;
 
 import java.io.File;
 
-import com.trolltech.qt.gui.QBitmap;
-import com.trolltech.qt.gui.QBrush;
-import com.trolltech.qt.gui.QColor;
-import com.trolltech.qt.gui.QGraphicsItemInterface;
-import com.trolltech.qt.gui.QGraphicsRectItem;
-import com.trolltech.qt.gui.QPen;
+import io.qt.gui.QBitmap;
+import io.qt.gui.QBrush;
+import io.qt.gui.QColor;
+import io.qt.widgets.QGraphicsItem;
+import io.qt.widgets.QGraphicsRectItem;
+import io.qt.gui.QPen;
 import com.xilinx.rapidwright.device.Tile;
-import com.xilinx.rapidwright.gui.TileScene;
 import com.xilinx.rapidwright.util.FileTools;
 
 /**

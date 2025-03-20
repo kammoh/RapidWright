@@ -26,7 +26,7 @@
  */
 package com.xilinx.rapidwright.design.blocks;
 
-import com.trolltech.qt.gui.QGraphicsScene;
+import io.qt.widgets.QGraphicsScene;
 import com.xilinx.rapidwright.gui.TileView;
 
 /**

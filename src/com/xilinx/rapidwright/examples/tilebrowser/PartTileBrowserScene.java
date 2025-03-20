@@ -23,20 +23,20 @@
  */
 package com.xilinx.rapidwright.examples.tilebrowser;
 
-import com.trolltech.qt.core.QPointF;
-import com.trolltech.qt.core.QRectF;
-import com.trolltech.qt.core.QSize;
-import com.trolltech.qt.gui.QBrush;
-import com.trolltech.qt.gui.QColor;
-import com.trolltech.qt.gui.QGraphicsPixmapItem;
-import com.trolltech.qt.gui.QGraphicsRectItem;
-import com.trolltech.qt.gui.QGraphicsScene;
-import com.trolltech.qt.gui.QGraphicsSceneMouseEvent;
-import com.trolltech.qt.gui.QImage;
-import com.trolltech.qt.gui.QPainter;
-import com.trolltech.qt.gui.QPen;
-import com.trolltech.qt.gui.QPixmap;
-import com.trolltech.qt.gui.QImage.Format;
+import io.qt.core.Qt;
+import io.qt.core.QPointF;
+import io.qt.core.QRectF;
+import io.qt.core.QSize;
+import io.qt.gui.QBrush;
+import io.qt.gui.QColor;
+import io.qt.widgets.QGraphicsPixmapItem;
+import io.qt.widgets.QGraphicsRectItem;
+import io.qt.widgets.QGraphicsScene;
+import io.qt.widgets.QGraphicsSceneMouseEvent;
+import io.qt.gui.QImage;
+import io.qt.gui.QPainter;
+import io.qt.gui.QPen;
+import io.qt.gui.QPixmap;
 import com.xilinx.rapidwright.device.Device;
 import com.xilinx.rapidwright.device.Tile;
 

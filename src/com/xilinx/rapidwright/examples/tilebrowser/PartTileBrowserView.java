@@ -23,17 +23,15 @@
  */
 package com.xilinx.rapidwright.examples.tilebrowser;
 
-import com.trolltech.qt.core.QPoint;
-import com.trolltech.qt.core.QPointF;
-import com.trolltech.qt.core.Qt;
-import com.trolltech.qt.core.Qt.CursorShape;
-import com.trolltech.qt.core.Qt.Key;
-import com.trolltech.qt.gui.QCursor;
-import com.trolltech.qt.gui.QGraphicsScene;
-import com.trolltech.qt.gui.QGraphicsView;
-import com.trolltech.qt.gui.QKeyEvent;
-import com.trolltech.qt.gui.QMouseEvent;
-import com.trolltech.qt.gui.QWheelEvent;
+import io.qt.core.QPoint;
+import io.qt.core.QPointF;
+import io.qt.core.Qt;
+import io.qt.gui.QCursor;
+import io.qt.widgets.QGraphicsScene;
+import io.qt.widgets.QGraphicsView;
+import io.qt.gui.QKeyEvent;
+import io.qt.gui.QMouseEvent;
+import io.qt.gui.QWheelEvent;
 
 /**
  * @author marc

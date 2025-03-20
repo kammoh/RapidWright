@@ -11,6 +11,10 @@ plugins {
 
 apply from: 'common.gradle'
 
+if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+    applicationDefaultJvmArgs = ["-XstartOnFirstThread"]
+}
+
 mainClassName = "com.xilinx.rapidwright.MainEntrypoint"
 def standaloneClassName = "com.xilinx.rapidwright.StandaloneEntrypoint"
 def preserveDir = ".preserveBin"

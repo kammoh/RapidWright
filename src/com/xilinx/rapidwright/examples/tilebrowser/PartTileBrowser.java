@@ -26,22 +26,18 @@ package com.xilinx.rapidwright.examples.tilebrowser;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.trolltech.qt.core.QModelIndex;
-import com.trolltech.qt.core.Qt.DockWidgetArea;
-import com.trolltech.qt.core.Qt.ItemDataRole;
-import com.trolltech.qt.core.Qt.WindowModality;
-import com.trolltech.qt.gui.QApplication;
-import com.trolltech.qt.gui.QDockWidget;
-import com.trolltech.qt.gui.QLabel;
-import com.trolltech.qt.gui.QMainWindow;
-import com.trolltech.qt.gui.QProgressDialog;
-import com.trolltech.qt.gui.QStatusBar;
-import com.trolltech.qt.gui.QTreeWidget;
-import com.trolltech.qt.gui.QWidget;
-import com.trolltech.qt.gui.QDockWidget.DockWidgetFeature;
+import io.qt.core.QModelIndex;
+import io.qt.core.Qt;
+import io.qt.widgets.QApplication;
+import io.qt.widgets.QDockWidget;
+import io.qt.widgets.QLabel;
+import io.qt.widgets.QMainWindow;
+import io.qt.widgets.QProgressDialog;
+import io.qt.widgets.QStatusBar;
+import io.qt.widgets.QTreeWidget;
+import io.qt.widgets.QWidget;
 import com.xilinx.rapidwright.device.Device;
 import com.xilinx.rapidwright.gui.WidgetMaker;
-import com.xilinx.rapidwright.util.MessageGenerator;
 
 /**
  * This class is an example of how RapidWright could be used to build

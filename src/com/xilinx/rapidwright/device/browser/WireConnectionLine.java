@@ -23,12 +23,12 @@
  */
 package com.xilinx.rapidwright.device.browser;
 
-import com.trolltech.qt.core.Qt.PenStyle;
-import com.trolltech.qt.gui.QColor;
-import com.trolltech.qt.gui.QGraphicsLineItem;
-import com.trolltech.qt.gui.QGraphicsSceneHoverEvent;
-import com.trolltech.qt.gui.QGraphicsSceneMouseEvent;
-import com.trolltech.qt.gui.QPen;
+import io.qt.core.Qt;
+import io.qt.gui.QColor;
+import io.qt.widgets.QGraphicsLineItem;
+import io.qt.widgets.QGraphicsSceneHoverEvent;
+import io.qt.widgets.QGraphicsSceneMouseEvent;
+import io.qt.gui.QPen;
 import com.xilinx.rapidwright.device.Tile;
 import com.xilinx.rapidwright.gui.TileScene;
 

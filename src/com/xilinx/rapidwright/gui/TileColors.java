@@ -23,7 +23,8 @@
  */
 package com.xilinx.rapidwright.gui;
 
-import com.trolltech.qt.gui.QColor;
+import io.qt.core.Qt;
+import io.qt.gui.QColor;
 import com.xilinx.rapidwright.device.Tile;
 import com.xilinx.rapidwright.device.TileTypeEnum;
 

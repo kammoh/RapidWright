@@ -23,8 +23,6 @@
  */
 package com.xilinx.rapidwright.gui;
 
-import com.trolltech.qt.gui.QFileDialog.Filter;
-
 public class FileFilters {
     /** Xilinx Design Language File Filter */
     public static Filter xpnFilter = new Filter("Xilinx Physical Netlist Files (*.xpn)");
