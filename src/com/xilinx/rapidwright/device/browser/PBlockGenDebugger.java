@@ -26,14 +26,15 @@
 package com.xilinx.rapidwright.device.browser;
 
 
+import com.xilinx.rapidwright.design.blocks.PBlockGenerator;
+import com.xilinx.rapidwright.device.Tile;
+import com.xilinx.rapidwright.gui.TileView;
+
 import io.qt.gui.QAction;
 import io.qt.widgets.QApplication;
 import io.qt.widgets.QMenu;
 import io.qt.widgets.QToolBar;
 import io.qt.widgets.QWidget;
-import com.xilinx.rapidwright.design.blocks.PBlockGenerator;
-import com.xilinx.rapidwright.device.Tile;
-import com.xilinx.rapidwright.gui.TileView;
 
 /**
  * WIP.
@@ -123,7 +124,7 @@ public class PBlockGenDebugger extends DeviceBrowser {
 
 
     public static void main(String[] args) {
-        QApplication.setGraphicsSystem("raster");
+        // QApplication.setGraphicsSystem("raster");
         QApplication.initialize(args);
         PBlockGenDebugger pbDebugger = new PBlockGenDebugger(null);
         pbDebugger.show();

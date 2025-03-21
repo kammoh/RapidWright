@@ -23,10 +23,10 @@
  */
 package com.xilinx.rapidwright.placer.handplacer;
 
-import io.qt.core.Qt;
-import io.qt.gui.QColor;
-import io.qt.gui.QPen;
 import com.xilinx.rapidwright.device.Tile;
+
+import io.qt.core.Qt;
+import io.qt.gui.QPen;
 
 public class PartitionLine{
 
@@ -40,8 +40,8 @@ public class PartitionLine{
     }
 
     public void drawPartitionLine(FloorPlanScene scene) {
-        QPen pen = new QPen(QColor.white, 20);
-        pen.setStyle(PenStyle.DashLine);
+        QPen pen = new QPen(Qt.GlobalColor.white, 20);
+        pen.setStyle(Qt.PenStyle.DashLine);
         scene.addLine(start.getColumn()*scene.tileSize,
                       start.getRow()*scene.tileSize,
                       end.getColumn()*scene.tileSize,

@@ -28,14 +28,15 @@ package com.xilinx.rapidwright.gui;
 
 import java.io.File;
 
+import com.xilinx.rapidwright.device.Tile;
+import com.xilinx.rapidwright.util.FileTools;
+
 import io.qt.gui.QBitmap;
 import io.qt.gui.QBrush;
 import io.qt.gui.QColor;
+import io.qt.gui.QPen;
 import io.qt.widgets.QGraphicsItem;
 import io.qt.widgets.QGraphicsRectItem;
-import io.qt.gui.QPen;
-import com.xilinx.rapidwright.device.Tile;
-import com.xilinx.rapidwright.util.FileTools;
 
 /**
  * @author marc
@@ -56,7 +57,7 @@ public class HMTile extends QGraphicsRectItem {
 
 
 
-    public HMTile(Tile newTile, TileScene scene, QGraphicsItemInterface parent, boolean hasSLICEM, boolean isAnchor)
+    public HMTile(Tile newTile, TileScene scene, QGraphicsItem parent, boolean hasSLICEM, boolean isAnchor)
     {
         super(0,0,scene.tileSize - 2, scene.tileSize - 2, parent);
         this.tile = newTile;
@@ -65,7 +66,7 @@ public class HMTile extends QGraphicsRectItem {
 
     }
 
-    public HMTile(Tile newTile, TileScene scene, QGraphicsItemInterface parent)
+    public HMTile(Tile newTile, TileScene scene, QGraphicsItem parent)
     {
         this(newTile,scene,parent,false,false);
     }

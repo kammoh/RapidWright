@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import io.qt.core.QEvent;
 import io.qt.core.QModelIndex;
 import io.qt.core.Qt.DockWidgetArea;
 import io.qt.core.Qt.ItemDataRole;
@@ -43,6 +44,8 @@ import io.qt.widgets.QTreeWidget;
 import io.qt.widgets.QTreeWidgetItem;
 import io.qt.widgets.QWidget;
 import io.qt.widgets.QDockWidget.DockWidgetFeature;
+
+import com.xilinx.rapidwright.design.tools.TileGroup;
 import com.xilinx.rapidwright.device.Device;
 import com.xilinx.rapidwright.device.Node;
 import com.xilinx.rapidwright.device.Site;
@@ -99,7 +102,7 @@ public class DeviceBrowser extends QMainWindow{
      * @param args
      */
     public static void main(String[] args) {
-        QApplication.setGraphicsSystem("raster");
+        // QApplication.setGraphicsSystem("raster");
         QApplication.initialize(args);
 
         String defaultPart = null;
@@ -241,7 +244,6 @@ public class DeviceBrowser extends QMainWindow{
      * Expands items in the node tree to add children nodes under uphill and
      * downhill.
      * 
-     * @param index
      */
     public void nodeClicked(QTreeWidgetItem item, Integer value) {
         String currNodeName = item.text(value);

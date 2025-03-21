@@ -32,6 +32,7 @@ import io.qt.core.QRectF;
 import io.qt.core.QSizeF;
 import io.qt.core.Qt;
 import io.qt.widgets.QAbstractItemView;
+import io.qt.widgets.QAbstractItemView.SelectionMode;
 import io.qt.gui.QAction;
 import io.qt.widgets.QApplication;
 import io.qt.widgets.QComboBox;
@@ -40,6 +41,7 @@ import io.qt.widgets.QFileDialog;
 import io.qt.widgets.QGraphicsItem;
 import io.qt.gui.QIcon;
 import io.qt.gui.QKeySequence;
+import io.qt.gui.QKeySequence.StandardKey;
 import io.qt.widgets.QLabel;
 import io.qt.widgets.QMainWindow;
 import io.qt.widgets.QMenu;
@@ -87,7 +89,7 @@ public class HandPlacer extends QMainWindow {
     public QToolBar toolbar;
 
     public static void main(String[] args) {
-        QApplication.setGraphicsSystem("raster");
+        // QApplication.setGraphicsSystem("raster");
         QApplication.initialize(args);
 
         boolean debugPlacer = false;
@@ -108,7 +110,7 @@ public class HandPlacer extends QMainWindow {
 	}
 	
 	public static void openDesign(Design d){
-		QApplication.setGraphicsSystem("raster");
+		// QApplication.setGraphicsSystem("raster");
 		QApplication.initialize(new String[]{});
 		
 		HandPlacer handPlacer = new HandPlacer(null, d);
@@ -228,9 +230,9 @@ public class HandPlacer extends QMainWindow {
 		if(macroList.hasFocus())
 			return;
 		macroList.clearSelection();
-		for(QGraphicsItemInterface item : scene.selectedItems()){
+		for(QGraphicsItem item : scene.selectedItems()){
 			String modInstName = ((GUIModuleInst)item).getModuleInst().getName();
-			List<QTreeWidgetItem> itemList = macroList.findItems(modInstName, new MatchFlags(MatchFlag.MatchExactly), 0);
+			List<QTreeWidgetItem> itemList = macroList.findItems(modInstName, new Qt.MatchFlags(Qt.MatchFlag.MatchExactly), 0);
 			if(itemList.size() > 0){
 				itemList.get(0).setSelected(true);
 			}
@@ -279,10 +281,10 @@ public class HandPlacer extends QMainWindow {
 		
 		
 		macroListDockWidget = new QDockWidget(tr("Module List"), this);
-		macroListDockWidget.setAllowedAreas(DockWidgetArea.RightDockWidgetArea,
-				DockWidgetArea.LeftDockWidgetArea);
+		macroListDockWidget.setAllowedAreas(Qt.DockWidgetArea.RightDockWidgetArea,
+				Qt.DockWidgetArea.LeftDockWidgetArea);
 		macroListDockWidget.setWidget(macroList);
-		addDockWidget(DockWidgetArea.RightDockWidgetArea, macroListDockWidget);
+		addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, macroListDockWidget);
 	}
 	
 	protected void about() {
@@ -301,7 +303,7 @@ public class HandPlacer extends QMainWindow {
 	
 	protected void openDesign(){
 		/*String fileName = QFileDialog.getOpenFileName(this, "Choose a file...",
-				".", FileFilters.xdlFilter);
+				".", FileFilters.xdlFilter.toString());
 		if(fileName.endsWith(".xdl")){
 			internalOpenDesign(fileName);
 		}*/
@@ -310,7 +312,7 @@ public class HandPlacer extends QMainWindow {
 	
 	protected void openWithAutoPlacer(){
 		String fileName = QFileDialog.getOpenFileName(this, "Choose a file...",
-				".", FileFilters.xdlFilter);
+				".", FileFilters.xdlFilter).result;
 		if (fileName.endsWith(".xdl")){
 			debugPlacer = true;
 			scene.debugPlacer = true;
@@ -325,9 +327,9 @@ public class HandPlacer extends QMainWindow {
 	protected void saveAsDCPDesign(){
 		if(scene.getDesign() == null)
 			return;
-		String fileName = QFileDialog.getSaveFileName(this, tr("Save As"),".", FileFilters.dcpFilter);
-        if (fileName.length() == 0)
-            return;
+		String fileName = QFileDialog.getSaveFileName(this, tr("Save As"),".", FileFilters.dcpFilter).result;
+		if (fileName.length() == 0)
+			return;
         scene.getDesign().flattenDesign();
         scene.getDesign().writeCheckpoint(fileName);
         statusBar().showMessage(fileName + " saved.", 2000);
@@ -336,9 +338,9 @@ public class HandPlacer extends QMainWindow {
 	protected void saveAsPDFDesign(){
 		if(scene.getDesign() == null)
 			return;
-		String fileName = QFileDialog.getSaveFileName(this, tr("Save As PDF"),".", FileFilters.pdfFilter);
-        if (fileName.length() == 0)
-            return;
+		String fileName = QFileDialog.getSaveFileName(this, tr("Save As PDF"),".", FileFilters.pdfFilter).result;
+		if (fileName.length() == 0)
+			return;
         UiTools.saveAsPdf(scene, new File(fileName));
         statusBar().showMessage(fileName + " saved.", 2000);
     }
@@ -434,7 +436,7 @@ public class HandPlacer extends QMainWindow {
 	@SuppressWarnings("unused")
 	private void zoomselection(){
 		double top=-1,left=-1,right=-1,bottom=-1;
-		for(QGraphicsItemInterface item : scene.selectedItems()){
+		for(QGraphicsItem item : scene.selectedItems()){
 			QPointF gmiTL = item.pos();
 			QPointF gmiBR = item.pos().add(item.boundingRect().bottomRight());
 			if(top < 0 || gmiTL.y() < top)

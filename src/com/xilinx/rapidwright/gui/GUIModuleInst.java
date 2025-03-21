@@ -27,17 +27,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
-import io.qt.QVariant;
+import io.qt.core.QVariant;
+import io.qt.core.Qt;
 import io.qt.core.QPointF;
 import io.qt.core.QRectF;
 import io.qt.gui.QBrush;
 import io.qt.gui.QColor;
-import io.qt.gui.QGraphicsItem.GraphicsItemChange;
-import io.qt.gui.QGraphicsItem.GraphicsItemFlag;
+import io.qt.widgets.QGraphicsItem.GraphicsItemChange;
+import io.qt.widgets.QGraphicsItem.GraphicsItemFlag;
 import io.qt.widgets.QGraphicsPolygonItem;
 import io.qt.widgets.QGraphicsSceneMouseEvent;
 import io.qt.gui.QPen;
 import io.qt.gui.QPolygonF;
+import io.qt.core.QStaticMemberSignals.Signal0;
+import io.qt.core.QStaticMemberSignals.Signal1;
 import com.xilinx.rapidwright.design.ModuleInst;
 import com.xilinx.rapidwright.design.Net;
 import com.xilinx.rapidwright.design.SiteInst;
@@ -201,7 +204,7 @@ public class GUIModuleInst extends QGraphicsPolygonItem {
     private void addHMTile(Tile tile, int tileX, int tileY, boolean hasSLICEM, boolean isAnchor) {
         HMTile hmTile = new HMTile(tile, scene, this, hasSLICEM, isAnchor);
         hmTile.moveBy(tileX * scene.tileSize, tileY * scene.tileSize);
-        hmTile.setBrush(new QBrush(QColor.white));
+        hmTile.setBrush(new QBrush(Qt.GlobalColor.white));
         hmTiles.add(hmTile);
 
     }
@@ -417,7 +420,7 @@ public class GUIModuleInst extends QGraphicsPolygonItem {
         for (HMTile hmTile : this.hmTiles) {
             hmTile.show();
         }
-        this.setBrush(new QBrush(QColor.transparent));
+        this.setBrush(new QBrush(Qt.GlobalColor.transparent));
         checkPlacement();
     }
     public void hideGuts() {
@@ -554,21 +557,21 @@ public class GUIModuleInst extends QGraphicsPolygonItem {
                 if (gutsHidden)
                     this.setBrush(new QBrush(HMTile.GREEN));
                 else
-                    this.setBrush(new QBrush(QColor.transparent));
+                    this.setBrush(new QBrush(Qt.GlobalColor.transparent));
                 break;
             case COLLIDING:
                 this.setPen(new QPen(HMTile.ORANGE));
                 if (gutsHidden)
                     this.setBrush(new QBrush(HMTile.ORANGE));
                 else
-                    this.setBrush(new QBrush(QColor.transparent));
+                    this.setBrush(new QBrush(Qt.GlobalColor.transparent));
                 break;
             case INVALID:
                 this.setPen(new QPen(HMTile.RED));
                 if (gutsHidden)
                     this.setBrush(new QBrush(HMTile.RED));
                 else
-                    this.setBrush(new QBrush(QColor.transparent));
+                    this.setBrush(new QBrush(Qt.GlobalColor.transparent));
                 break;
             default:
                 break;

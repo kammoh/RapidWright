@@ -139,7 +139,7 @@ task standaloneJar (type: Jar) {
     manifest {
         attributes 'Main-Class': standaloneClassName
     }
-    archiveBaseName = 'rapidwright-'+rapidwright_version+'-standalone-' + os.charAt(0) + 'in64'
+    archiveBaseName = 'rapidwright-'+rapidwright_version+'-standalone-' + os
     from { configurations.implementation.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }

@@ -42,6 +42,7 @@ import io.qt.widgets.QGraphicsLineItem;
 import io.qt.widgets.QGraphicsSceneMouseEvent;
 import io.qt.widgets.QMenu;
 import io.qt.gui.QPen;
+
 import com.xilinx.rapidwright.design.tools.Edge;
 import com.xilinx.rapidwright.design.tools.TileGroup;
 import com.xilinx.rapidwright.device.Device;
@@ -51,13 +52,15 @@ import com.xilinx.rapidwright.gui.NumberedHighlightedTile;
 import com.xilinx.rapidwright.gui.TileScene;
 import com.xilinx.rapidwright.router.RouteNode;
 
+import io.qt.core.Qt;
+
 /**
  * This class was written specifically for the DeviceBrowser class.  It
  * provides the scene content of the 2D tile array.
  */
 public class DeviceBrowserScene extends TileScene{
     /**     */
-    public Signal1<Tile> updateTile = new Signal1<Tile>();
+    public final Signal1<Tile> updateTile = new Signal1<>();
     /**     */
     private QPen wirePen;
     /**     */
@@ -77,7 +80,7 @@ public class DeviceBrowserScene extends TileScene{
     public DeviceBrowserScene(Device device, boolean hideTiles, boolean drawPrimitives, DeviceBrowser browser) {
         super(device, hideTiles, drawPrimitives);
         currLines = new ArrayList<QGraphicsLineItem>();
-        wirePen = new QPen(QColor.yellow, 0.25, PenStyle.SolidLine);
+        wirePen = new QPen(Qt.GlobalColor.yellow, 0.25, PenStyle.SolidLine);
         this.browser = browser;
         QEvent.registerEventType(CLEAR_HIGHLIGHTED_TILES);
         QEvent.registerEventType(HIGHLIGHT_TILE_GROUPS);
@@ -260,7 +263,7 @@ public class DeviceBrowserScene extends TileScene{
     }
 
     public void highlightTileGroup(TileGroup tg) {
-        QBrush brush = new QBrush(QColor.red);
+        QBrush brush = new QBrush(Qt.GlobalColor.red);
         Map<Tile, Edge> tileMap = tg.getRegionTiles();
         for (Entry<Tile, Edge> e : tileMap.entrySet()) {
             if (e.getValue() == Edge.INTERNAL)

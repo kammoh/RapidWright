@@ -26,16 +26,17 @@
  */
 package com.xilinx.rapidwright.placer.handplacer;
 
+import com.xilinx.rapidwright.gui.HMTile;
+
+import io.qt.core.QLineF;
 import io.qt.core.QPointF;
 import io.qt.core.Qt;
 import io.qt.gui.QColor;
-import io.qt.widgets.QGraphicsLineItem;
-import io.qt.core.QLineF;
 import io.qt.gui.QPainter;
 import io.qt.gui.QPen;
+import io.qt.widgets.QGraphicsLineItem;
 import io.qt.widgets.QStyleOptionGraphicsItem;
 import io.qt.widgets.QWidget;
-import com.xilinx.rapidwright.gui.HMTile;
 
 
 /**
@@ -54,10 +55,10 @@ public class GUINetLine extends QGraphicsLineItem {
         this.destTile = destTile;
         updateLine();
         alpha = 128;
-        QColor color = QColor.magenta;
+        QColor color = new QColor(Qt.GlobalColor.magenta);
         color.setAlpha(alpha);
         QPen pen = new QPen(color, 1.0);
-        pen.setCapStyle(PenCapStyle.RoundCap);
+        pen.setCapStyle(Qt.PenCapStyle.RoundCap);
         this.setPen(pen);
         setZValue(3.0);
     }

@@ -23,21 +23,24 @@
  */
 package com.xilinx.rapidwright.examples.tilebrowser;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import com.xilinx.rapidwright.device.Device;
+import com.xilinx.rapidwright.gui.WidgetMaker;
+
 import io.qt.core.QModelIndex;
-import io.qt.core.Qt;
+import io.qt.core.Qt.DockWidgetArea;
+import io.qt.core.Qt.ItemDataRole;
+import io.qt.core.Qt.WindowModality;
 import io.qt.widgets.QApplication;
 import io.qt.widgets.QDockWidget;
+import io.qt.widgets.QDockWidget.DockWidgetFeature;
 import io.qt.widgets.QLabel;
 import io.qt.widgets.QMainWindow;
 import io.qt.widgets.QProgressDialog;
 import io.qt.widgets.QStatusBar;
 import io.qt.widgets.QTreeWidget;
 import io.qt.widgets.QWidget;
-import com.xilinx.rapidwright.device.Device;
-import com.xilinx.rapidwright.gui.WidgetMaker;
 
 /**
  * This class is an example of how RapidWright could be used to build
@@ -67,7 +70,7 @@ public class PartTileBrowser extends QMainWindow{
      */
     public static void main(String[] args) {
         // This line fixes slow performance under Linux
-        QApplication.setGraphicsSystem("raster");
+        // QApplication.setGraphicsSystem("raster");
 
         QApplication.initialize(args);
         PartTileBrowser testPTB = new PartTileBrowser(null);

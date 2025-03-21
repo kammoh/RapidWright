@@ -24,28 +24,28 @@ package com.xilinx.rapidwright.examples;
  *
  */
 
+import java.io.File;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+import com.xilinx.rapidwright.device.Site;
+import com.xilinx.rapidwright.device.Tile;
+import com.xilinx.rapidwright.gui.TileScene;
+import com.xilinx.rapidwright.gui.TileView;
+import com.xilinx.rapidwright.gui.UiTools;
+import com.xilinx.rapidwright.util.FileTools;
+
 import io.qt.gui.QAction;
-import io.qt.widgets.QApplication;
-import io.qt.widgets.QFileDialog;
 import io.qt.gui.QIcon;
 import io.qt.gui.QKeySequence;
+import io.qt.widgets.QApplication;
+import io.qt.widgets.QFileDialog;
 import io.qt.widgets.QLabel;
 import io.qt.widgets.QMainWindow;
 import io.qt.widgets.QMenu;
 import io.qt.widgets.QStatusBar;
 import io.qt.widgets.QToolBar;
 import io.qt.widgets.QWidget;
-import com.xilinx.rapidwright.device.Site;
-import com.xilinx.rapidwright.device.Tile;
-import com.xilinx.rapidwright.gui.FileFilters;
-import com.xilinx.rapidwright.gui.TileScene;
-import com.xilinx.rapidwright.gui.TileView;
-import com.xilinx.rapidwright.gui.UiTools;
-import com.xilinx.rapidwright.util.FileTools;
-
-import java.io.File;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
 /**
  * Creates a zoomable UI view of a provided TileScene
@@ -105,7 +105,7 @@ public class TileWindow extends QMainWindow {
     protected void saveAsPDFDesign() {
         if (scene.getDesign() == null)
             return;
-        String fileName = QFileDialog.getSaveFileName(this, tr("Save As PDF"),".", FileFilters.pdfFilter).toString();
+        String fileName = QFileDialog.getSaveFileName(this, tr("Save As PDF"),".", "PDF Files (*.pdf)").toString();
         if (fileName.length() == 0)
             return;
         UiTools.saveAsPdf(scene, new File(fileName));

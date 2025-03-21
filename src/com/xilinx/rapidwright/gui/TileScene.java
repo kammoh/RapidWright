@@ -24,6 +24,7 @@
 package com.xilinx.rapidwright.gui;
 
 import io.qt.core.Qt;
+import io.qt.core.Qt.PenStyle;
 import io.qt.core.QPointF;
 import io.qt.core.QRectF;
 import io.qt.core.QSize;
@@ -35,6 +36,7 @@ import io.qt.widgets.QGraphicsRectItem;
 import io.qt.widgets.QGraphicsScene;
 import io.qt.widgets.QGraphicsSceneMouseEvent;
 import io.qt.gui.QImage;
+import io.qt.gui.QImage.Format;
 import io.qt.gui.QPainter;
 import io.qt.gui.QPen;
 import io.qt.gui.QPixmap;
@@ -57,7 +59,7 @@ public class TileScene extends QGraphicsScene{
     /** The actual square used to highlight a tile */
     public QGraphicsRectItem highlit;
     /** Pen used to draw tile cursor */
-    public QPen cursorPen = new QPen(QColor.yellow, 2);
+    public QPen cursorPen = new QPen(new QColor(Qt.GlobalColor.yellow), 2);
     /** The current X location of the mouse */
     public int currX;
     /** The current Y location of the mouse */
@@ -83,9 +85,9 @@ public class TileScene extends QGraphicsScene{
     /** The device corresponding to this scene */
     public Device device;
     /** The signal which updates the status bar */
-    public Signal2<String, Tile> updateStatus = new Signal2<String, Tile>();
+    public final Signal2<String, Tile> updateStatus = new Signal2<>();
     /** The signal which is made when a mouse button is pressed */
-    public Signal0 mousePressed = new Signal0();
+    public final Signal0 mousePressed = new Signal0();
     /** The current design associated with this scene */
     private Design design;
     /** This is the actual image shown in the scene of the FPGA fabric */
@@ -172,7 +174,7 @@ public class TileScene extends QGraphicsScene{
             cols = device.getColumns();
             sceneSize = new QSize((cols + 1) * (tileSize + 1), (rows + 1) * (tileSize + 1));
             setSceneRect(new QRectF(new QPointF(0, 0), new QSizeF(sceneSize)));
-            setBackgroundBrush(new QBrush(QColor.black));
+            setBackgroundBrush(new QBrush(new QColor(Qt.GlobalColor.black)));
             calculateSkippedTiles();
         }
         else {
@@ -195,9 +197,9 @@ public class TileScene extends QGraphicsScene{
         //Create transparent QPixmap that accepts hovers
         //  so that moveMouseEvent is triggered
         QPixmap pixelMap = new QPixmap(sceneSize);
-        pixelMap.fill(QColor.transparent);
+        pixelMap.fill(new QColor(Qt.GlobalColor.transparent));
         QGraphicsPixmapItem background = addPixmap(pixelMap);
-        background.setAcceptsHoverEvents(true);
+        background.setAcceptHoverEvents(true);
         background.setZValue(-1);
 
         // Draw colored tiles onto QPixMap
@@ -256,7 +258,7 @@ public class TileScene extends QGraphicsScene{
         int i=0;
 
         //Draw dashed lines where rows/columns have been removed
-        QPen missingTileLinePen = new QPen(QColor.lightGray, 2, PenStyle.DashLine);
+        QPen missingTileLinePen = new QPen(new QColor(Qt.GlobalColor.lightGray), 2, PenStyle.DashLine);
         painter.setPen(missingTileLinePen);
         i = 0;
         for (int col : colsToSkip) {

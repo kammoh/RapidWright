@@ -25,15 +25,15 @@
  */
 package com.xilinx.rapidwright.device.browser;
 
-import io.qt.core.QObject;
+import io.qt.core.QSignalMapper;
 import com.xilinx.rapidwright.device.Tile;
 
 /**
  * WIP.
  *
- * Created on: Jun 18, 2015
+ * Created  on: Jun 18, 2015
  */
-public class PBlockGenEmitter extends QSignalEmitter{
+public class PBlockGenEmitter extends QSignalMapper{
     public Signal1<Tile> highlightTile = new Signal1<Tile>();
 
     public void emitTile(Tile t) {

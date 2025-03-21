@@ -22,6 +22,20 @@
 
 package com.xilinx.rapidwright.eco;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
 import com.xilinx.rapidwright.design.Cell;
 import com.xilinx.rapidwright.design.Design;
 import com.xilinx.rapidwright.design.DesignTools;
@@ -46,19 +60,6 @@ import com.xilinx.rapidwright.util.FileTools;
 import com.xilinx.rapidwright.util.ReportRouteStatusResult;
 import com.xilinx.rapidwright.util.VivadoTools;
 import com.xilinx.rapidwright.util.VivadoToolsHelper;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class TestECOTools {
     @Test
@@ -212,7 +213,7 @@ public class TestECOTools {
             List<EDIFHierPortInst> ehpiLeaves = ehpi.getInternalNet().getLeafHierPortInsts(false, true);
             Assertions.assertFalse(ehn.getLeafHierPortInsts(false, true).stream().anyMatch(ehpiLeaves::contains));
 
-            netToPortInsts.put(ehn, new ArrayList(){{ add(ehpi); }});
+            netToPortInsts.put(ehn, Collections.singletonList(ehpi));
         }
         ECOTools.connectNet(design, netToPortInsts, deferredRemovals);
         Assertions.assertEquals(0, deferredRemovals.size());
@@ -288,8 +289,8 @@ public class TestECOTools {
 
         // Swap those output pins
         Map<EDIFHierNet, List<EDIFHierPortInst>> netToPortInsts = new HashMap<>();
-        netToPortInsts.put(disconnectedNets.get(0), new ArrayList() {{ add(disconnectPins.get(1)); }});
-        netToPortInsts.put(disconnectedNets.get(1), new ArrayList() {{ add(disconnectPins.get(0)); }});
+        netToPortInsts.put(disconnectedNets.get(0), Collections.singletonList(disconnectPins.get(1)));
+        netToPortInsts.put(disconnectedNets.get(1), Collections.singletonList(disconnectPins.get(0)));
 
         ECOTools.connectNet(design, netToPortInsts, deferredRemovals);
         Assertions.assertEquals(0, deferredRemovals.size());

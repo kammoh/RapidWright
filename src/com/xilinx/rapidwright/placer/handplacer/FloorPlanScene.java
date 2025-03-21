@@ -37,7 +37,7 @@ import io.qt.core.QPointF;
 import io.qt.core.Qt;
 import io.qt.gui.QBrush;
 import io.qt.gui.QColor;
-import io.qt.widgets.QGraphicsItemInterface;
+import io.qt.widgets.QGraphicsItem;
 import io.qt.widgets.QGraphicsLineItem;
 import io.qt.widgets.QGraphicsRectItem;
 import io.qt.widgets.QGraphicsSceneMouseEvent;
@@ -97,7 +97,7 @@ public class FloorPlanScene extends TileScene {
         this.debugPlacer = debugPlacer;
         initializeScene();
         // Let's not use a cursor
-        cursorPen = new QPen(QColor.transparent);
+        cursorPen = new QPen(new QColor(Qt.GlobalColor.transparent));
     }
 
     public void initializeScene() {
@@ -313,20 +313,20 @@ public class FloorPlanScene extends TileScene {
                         if (destY < 0)
                             destY = (destTile.getRow() >= rows)? (rows-1)*tileSize : destTile.getRow()*tileSize;
                         QGraphicsLineItem line = new QGraphicsLineItem(10+srcX, 10+srcY, 10+destX, 10+destY);
-                        line.setPen(new QPen(QColor.cyan, 2));
+                        line.setPen(new QPen(new QColor(Qt.GlobalColor.cyan), 2));
                         addItem(line);
                         continue;
                     }
                 }
                 //Module-to-module + Module-to-IOB connections
-                QGraphicsItemInterface gmiSrc = getGMI(srcMIName);
+                QGraphicsItem gmiSrc = getGMI(srcMIName);
                 //for IOB connections, create immovable HMTile for net connection
                 if (gmiSrc == null) {
                     HMTile hmTile = new HMTile(srcTile, this, null);
                     hmTile.moveBy(getDrawnTileX(srcTile) * this.tileSize, getDrawnTileY(srcTile) * this.tileSize);
                     gmiSrc = hmTile;
                 }
-                QGraphicsItemInterface gmiDest = getGMI(destMIName);
+                QGraphicsItem gmiDest = getGMI(destMIName);
                 if (gmiDest == null) {
                     HMTile hmTile = new HMTile(destTile, this, null);
                     hmTile.moveBy(getDrawnTileX(destTile) * this.tileSize, getDrawnTileY(destTile) * this.tileSize);

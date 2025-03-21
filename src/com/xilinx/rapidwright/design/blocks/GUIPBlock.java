@@ -26,19 +26,22 @@
  */
 package com.xilinx.rapidwright.design.blocks;
 
-import io.qt.core.QVariant;
-import io.qt.core.QStaticMemberSignals;
-import io.qt.core.QPointF;
-import io.qt.core.QRectF;
-import io.qt.core.Qt;
-import io.qt.gui.QBrush;
-import io.qt.gui.QColor;
-import io.qt.widgets.QGraphicsPolygonItem;
-import io.qt.widgets.QGraphicsSceneMouseEvent;
-import io.qt.gui.QPen;
-import io.qt.gui.QPolygonF;
 import com.xilinx.rapidwright.device.Tile;
 import com.xilinx.rapidwright.gui.TileScene;
+
+import io.qt.core.QPointF;
+import io.qt.core.QRectF;
+import io.qt.core.QStaticMemberSignals.Signal0;
+import io.qt.core.QStaticMemberSignals.Signal1;
+import io.qt.core.QVariant;
+import io.qt.core.Qt;
+import io.qt.core.Qt.PenStyle;
+import io.qt.gui.QBrush;
+import io.qt.gui.QColor;
+import io.qt.gui.QPen;
+import io.qt.gui.QPolygonF;
+import io.qt.widgets.QGraphicsPolygonItem;
+import io.qt.widgets.QGraphicsSceneMouseEvent;
 
 /**
  * WIP.  Represents a PBlock in a GUI context.
@@ -51,9 +54,9 @@ public class GUIPBlock extends QGraphicsPolygonItem {
 
     private PBlock pb;
 
-    public Signal1<Boolean> selected = new Signal1<Boolean>();
+    public final Signal1<Boolean> selected = new Signal1<>();
 
-    public Signal0 moved = new Signal0();
+    public final Signal0 moved = new Signal0();
 
     private TileScene scene;
 

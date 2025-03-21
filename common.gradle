@@ -30,12 +30,12 @@ ext.os = System.getProperty("os.name").toLowerCase().contains("windows") ?
                                        "win64-msvc2005x64" : "linux64-gcc"
 
 dependencies {
-  api 'com.github.luben:zstd-jni:1.5.5-1'
+  api 'com.github.luben:zstd-jni:1.5.7-2'
   api 'com.esotericsoftware:kryo:5.2.1'
-  api 'org.jgrapht:jgrapht-core:1.3.0'
-  api 'org.capnproto:runtime:0.1.13'
+  api 'org.jgrapht:jgrapht-core:1.3.1'
+  api 'org.capnproto:runtime:0.1.16'
   api 'net.sf.jopt-simple:jopt-simple:5.0.4'
-  api 'org.python:jython-standalone:2.7.2'
+  api 'org.python:jython-standalone:2.7.4'
   api 'com.google.protobuf:protobuf-java:3.25.0'
   api 'org.jetbrains:annotations:20.1.0'
   api 'org.zeromq:jeromq:0.5.2'
@@ -44,22 +44,20 @@ dependencies {
   api 'com.jcraft:jzlib:1.1.3'
   api 'commons-io:commons-io:2.11.0'
 
-  api 'io.qtjambi:qtjambi:6.3.1'
+  // api 'com.github.jnr:jnr-ffi:2.2.17'
+
+  api 'io.qtjambi:qtjambi:6.8.2'
 
   if (System.getProperty("os.name").toLowerCase().contains("mac")) {
-    if (System.getProperty("os.arch").contains("aarch64")) {
-      project.logger.warn("There is no qtjambi-native-macos for aarch64; please compile from source https://github.com/OmixVisualization/qtjambi.")
-    } else {
-      implementation 'io.qtjambi:qtjambi-native-macos:6.3.1'
-    }
+    implementation 'io.qtjambi:qtjambi-native-macos:6.8.2'
   } else if (System.getProperty("os.name").toLowerCase().contains("linux")) {
-    implementation 'io.qtjambi:qtjambi-native-linux-x64:6.3.1'
+    implementation 'io.qtjambi:qtjambi-native-linux-x64:6.8.2'
   } else {
-    implementation 'io.qtjambi:qtjambi-native-windows-x64:6.3.1'
+    implementation 'io.qtjambi:qtjambi-native-windows-x64:6.8.2'
   }
 
-  api group: 'io.qtjambi', name: 'qtjambi-svg', version: '6.3.1'
-  api group: 'io.qtjambi', name: 'qtjambi-printsupport', version: '6.3.1'
+  api group: 'io.qtjambi', name: 'qtjambi-svg', version: '6.8.2'
+  api group: 'io.qtjambi', name: 'qtjambi-printsupport', version: '6.8.2'
 
 
   api 'com.xilinx.rapidwright:jupyter-kernel-jsr223:1.0.1'

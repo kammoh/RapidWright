@@ -28,11 +28,12 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.xilinx.rapidwright.device.Part;
+import com.xilinx.rapidwright.device.PartNameTools;
+
 import io.qt.core.Qt;
 import io.qt.widgets.QTreeWidget;
 import io.qt.widgets.QTreeWidgetItem;
-import com.xilinx.rapidwright.device.Part;
-import com.xilinx.rapidwright.device.PartNameTools;
 
 public class WidgetMaker {
 
@@ -72,7 +73,7 @@ public class WidgetMaker {
 
                     partItem = new QTreeWidgetItem(parent);
                     partItem.setText(0, p.getDevice());
-                    partItem.setData(0, ItemDataRole.AccessibleDescriptionRole, p.getDevice());
+                    partItem.setData(0, Qt.ItemDataRole.AccessibleDescriptionRole, p.getDevice());
                 });
 
         return treeWidget;

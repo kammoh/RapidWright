@@ -22,7 +22,7 @@
 
 package com.xilinx.rapidwright.device.browser;
 
-import com.trolltech.qt.gui.QApplication;
+import io.qt.widgets.QApplication;
 
 /**
  * Helper class to enable {@link DeviceBrowser} to be threaded and non-blocking
@@ -40,7 +40,7 @@ public class ThreadedDeviceBrowser extends Thread {
 
     @Override
     public void run() {
-        QApplication.setGraphicsSystem("raster");
+        // QApplication.setGraphicsSystem("raster");
         QApplication.initialize(args);
 
         String defaultPart = null;

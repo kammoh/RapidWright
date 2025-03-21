@@ -23,22 +23,24 @@
  */
 package com.xilinx.rapidwright.examples.tilebrowser;
 
-import io.qt.core.Qt;
+import com.xilinx.rapidwright.device.Device;
+import com.xilinx.rapidwright.device.Tile;
+
 import io.qt.core.QPointF;
 import io.qt.core.QRectF;
 import io.qt.core.QSize;
+import io.qt.core.Qt.GlobalColor;
 import io.qt.gui.QBrush;
 import io.qt.gui.QColor;
+import io.qt.gui.QImage;
+import io.qt.gui.QImage.Format;
+import io.qt.gui.QPainter;
+import io.qt.gui.QPen;
+import io.qt.gui.QPixmap;
 import io.qt.widgets.QGraphicsPixmapItem;
 import io.qt.widgets.QGraphicsRectItem;
 import io.qt.widgets.QGraphicsScene;
 import io.qt.widgets.QGraphicsSceneMouseEvent;
-import io.qt.gui.QImage;
-import io.qt.gui.QPainter;
-import io.qt.gui.QPen;
-import io.qt.gui.QPixmap;
-import com.xilinx.rapidwright.device.Device;
-import com.xilinx.rapidwright.device.Tile;
 
 /**
  *
@@ -94,21 +96,21 @@ public class PartTileBrowserScene extends QGraphicsScene {
 
     private void drawSliceBackground() {
 
-        setBackgroundBrush(new QBrush(QColor.black));
+        setBackgroundBrush(new QBrush(GlobalColor.black));
         //Create transparent QPixmap that accepts hovers
         //  so that moveMouseEvent is triggered
         QPixmap qpm = new QPixmap(new QSize((numCols + 1) * (tileSize + 1),
                 (numRows + 1) * (tileSize + 1)));
         qpm.fill(new QColor(255, 255,255, 0));
         QGraphicsPixmapItem background = addPixmap(qpm);
-        background.setAcceptsHoverEvents(true);
+        background.setAcceptHoverEvents(true);
         background.setZValue(-1);
         // Draw colored tiles onto QImage
         qImage = new QImage(new QSize((numCols + 1) * (tileSize + 1),
                 (numRows + 1) * (tileSize + 1)), Format.Format_RGB16);
         QPainter painter = new QPainter(qImage);
 
-        painter.setPen(new QPen(QColor.black, lineWidth));
+        painter.setPen(new QPen(GlobalColor.black, lineWidth));
         // Draw lines between tiles
         for (int i = 0; i <= numCols; i++) {
             painter.drawLine((i) * tileSize, tileSize, (i) * tileSize,
@@ -133,15 +135,15 @@ public class PartTileBrowserScene extends QGraphicsScene {
 
                 if (name.startsWith("DSP")) {
                     // color = QColor.fromRgb(145, 145, 145);
-                    color = QColor.darkCyan;
+                    color =  new QColor(GlobalColor.darkCyan);
                 } else if (name.startsWith("BRAM")) {
                     // color = QColor.fromRgb(165, 165, 165);
-                    color = QColor.darkMagenta;
+                    color = new QColor(GlobalColor.darkMagenta);
                 } else if (name.startsWith("INT")) {
                     // color = QColor.fromRgb(125, 125, 125);
-                    color = QColor.darkYellow;
+                    color = new QColor(GlobalColor.darkYellow);
                 } else if (name.startsWith("CLB")) {
-                    color = QColor.blue;
+                    color = new QColor(GlobalColor.blue);
                     // color = QColor.fromRgb(185, 185, 185);
                 } else if (name.startsWith("DCM")) {
                     // color = QColor.fromRgb(205, 205, 205);
@@ -182,7 +184,7 @@ public class PartTileBrowserScene extends QGraphicsScene {
 
     private void updateCursor() {
         if (highlit == null) {
-            QPen cursorPen = new QPen(QColor.yellow, 3);
+            QPen cursorPen = new QPen(GlobalColor.yellow, 3);
             highlit = addRect(currX * tileSize, currY * tileSize, tileSize - 2,
                     tileSize - 2, cursorPen);
         } else {
